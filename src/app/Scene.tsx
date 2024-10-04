@@ -159,8 +159,11 @@ const Scene = () => {
         <div className="absolute top-10 left-10 p-4 bg-white border border-gray-300 shadow-lg z-10 rounded-md">
           <p className="text-gray-800">{popupContent}</p>
           <button 
-            className="mt-2 px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-            onClick={() => setPopupContent(null)}
+            className="mt-2 px-3 py-1 text-white rounded bg-[#E35A00] hover:bg-[#C64E00]"
+            onClick={(e) => {
+                e.stopPropagation();
+                setPopupContent(null)
+            }}
           >
             Close
           </button>
