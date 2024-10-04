@@ -51,7 +51,7 @@ const Scene = () => {
 
     const setUserDataRecursively = (object:THREE.Group<THREE.Object3DEventMap>, wish:string) => {
         object.userData = { wish }; // Set userData for the current object
-        object.children.forEach((child, index) => {
+        object.children.forEach((child) => {
           setUserDataRecursively(child as THREE.Group<THREE.Object3DEventMap>, wish); // Set userData for each child
         });
       };
@@ -145,10 +145,11 @@ const Scene = () => {
     };
 
     animate();
-
+    const mountedCurrent = mountRef.current;
     return () => {
-        if(mountRef.current){
-            mountRef.current.removeChild(renderer.domElement);
+        
+        if(mountedCurrent){
+            mountedCurrent.removeChild(renderer.domElement);
         }
     };
   }, []);
